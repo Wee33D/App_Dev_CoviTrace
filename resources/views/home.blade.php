@@ -45,7 +45,7 @@
 <div class="w3-third">
   <div class="w3-card w3-container" style="min-height:460px">
   <h3>Monitor Patient Location</h3><br>
- <img src="{{ URL::to('/img/lokasi.jpg') }}" height="300px" width="300px"/>
+  <a href="/trackpatients"><img src="{{ URL::to('/img/lokasi.jpg') }}" height="300px" width="300px"/></a>
   <p>Based on patient's device latest location</p>
   </div>
 </div>

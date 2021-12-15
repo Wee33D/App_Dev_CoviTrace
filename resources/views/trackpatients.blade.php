@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en" class="page">
 <head>
@@ -15,7 +18,7 @@
 </head>
 
 <body>
-    <div class="container" style="margin-top: 50px;">
+    <div class="container" style="margin-top: 30px;">
         <div class="row" style="margin-top:80px">
 
         <h3 class="text-center">Track Patients </h3><br>
@@ -27,10 +30,10 @@
         <table class="table table-bordered">
             <tr>
                 
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone No.</th>
-                <th width="180" class="text-center">Radius</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Phone No.</th>
+                <th class="text-center">Address </th>
+                <th width="180" class="text-center">Travel Radius(km)</th>
                 <th width="180" class="text-center">Days Left</th>
             </tr>
             @foreach($patient as $list)
@@ -40,10 +43,10 @@
             <tr>
                 
                 <td>{{$list->data()['name']}}</td>
-                <td>{{$list->data()['email']}}</td>
-                <td>{{$list->data()['phoneno']}}</td>
-                <td> </td>
-                <td> </td>
+                <td >{{$list->data()['phoneno']}}</td>
+                <td>{{$list->data()['address']}}</td>
+                <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
+                <td class="text-center">{{$list->data()['radius']}}</td>
             </tr>
             @endforeach
             <tbody id="tbody">
@@ -55,5 +58,5 @@
 </div>
 </body>
 </html>
-
+@endsection
 

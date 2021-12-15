@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,34 +15,43 @@
 <body>
 
 <div class="container">
-         <div class="row" style="margin-top:80px">
+         <div class="row" style="margin-top:30px">
             <div class="col-md-4 col-md-offset-6">
                <h4>Patient Information </h4><hr>
 
+               <form action="{{ url('update_patient/'.$patient->id()) }}" method="POST">
+                  @csrf
+                 
                <div class="form-group">
                      <label>Name</label>
-                     <input type="text" class="form-control"  value="{{ $patient['name']}}">
+                     <input type="text" name="name" class="form-control" name='name' value="{{ $patient['name']}}">
                      
                   </div>
+
+                  <div class="form-group">
+                     <label>email</label>
+                     <input type="text" name="name" class="form-control"  value="{{ $patient['email']}}">
+                     
+                  </div>
+
                   <div class="form-group">
                      <label>Phone Number</label>
-                     <input type="text" class="form-control" value="{{ $patient['phoneno'] }}">
+                     <input type="text" name="phoneno" class="form-control" value="{{ $patient['phoneno'] }}">
                      
                   </div>
                   <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control"  value="{{ $patient['address'] }}">
-
+                    <input type="text" name="address" class="form-control"  name="address" value="{{ $patient['address'] }}">
+                  </div>
+               
                   <div class="form-group">
                      <label>Quarantine Day</label>
-                     <input type="text" class="form-control" value="{{ $patient['quarantine'] }}">
+                     <input type="number" class="form-control" name="quarantineDuration" value="{{ $patient['quarantineDuration'] }}">
                      
                   </div> 
-                  <div class="form-group">
-                    <label>Radius</label>
-                    <input type="text" class="form-control" value="{{ $patient['radius'] }}">
                   <br>
                   <a href="{{ url('patients') }}" class="btn btn-sm btn-danger float-end">Back</a>
+                  <button type="submit" name="register_btn" class="btn btn-primary">Update</button>
                   <br>
                   
                </form>
@@ -48,3 +61,4 @@
     
 </body>
 </html>
+@endsection
