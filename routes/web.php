@@ -36,6 +36,8 @@ Route::resource('/img', App\Http\Controllers\ImageController::class);
 
 Route::get('/patients', [PatientController::class, 'displayinfo'])->name('patients');
 
+Route::get('/viewtrackpatients', [App\Http\Controllers\HomeController::class, 'trackpatients'])->name('trackpatients');
+
 Route::get('editP/{id}', [PatientController::class, 'edit']);
 Route::get('viewP/{id}', [PatientController::class, 'view']);
 Route::post('update_patient/{id}', [PatientController:: class, 'update']);

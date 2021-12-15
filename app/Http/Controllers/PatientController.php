@@ -95,6 +95,13 @@ public function destroy($id)
 
 // }
 
+public function trackpatients(){
+
+  $patient = app('firebase.firestore')->database()->collection('patients')->documents(); 
+
+
+return view('trackpatients')->with(compact('patient'));
+}
 
 
 }
