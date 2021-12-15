@@ -24,19 +24,19 @@
                  
                <div class="form-group">
                      <label>Name</label>
-                     <input type="text" name="name" class="form-control" name='name' value="{{ $patient['name']}}">
+                     <input type="text" name="name" class="form-control" name='name' value="{{ $patient['name']}}"disabled >
                      
                   </div>
 
                   <div class="form-group">
                      <label>email</label>
-                     <input type="text" name="name" class="form-control"  value="{{ $patient['email']}}">
+                     <input type="text" name="name" class="form-control"  value="{{ $patient['email']}}"disabled readonly>
                      
                   </div>
 
                   <div class="form-group">
                      <label>Phone Number</label>
-                     <input type="text" name="phoneno" class="form-control" value="{{ $patient['phoneno'] }}">
+                     <input type="text" name="phoneno" class="form-control" value="{{ $patient['phoneno'] }}" readonly>
                      
                   </div>
                   <div class="form-group">
