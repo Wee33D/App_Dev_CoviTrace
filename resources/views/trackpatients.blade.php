@@ -30,7 +30,8 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone No.</th>
-                <th width="180" class="text-center">Location</th>
+                <th width="180" class="text-center">Radius</th>
+                <th width="180" class="text-center">Days Left</th>
             </tr>
             @foreach($patient as $list)
             @if ($list)
@@ -41,6 +42,7 @@
                 <td>{{$list->data()['name']}}</td>
                 <td>{{$list->data()['email']}}</td>
                 <td>{{$list->data()['phoneno']}}</td>
+                <td> </td>
                 <td> </td>
             </tr>
             @endforeach
