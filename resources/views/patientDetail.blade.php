@@ -17,6 +17,9 @@
 <div class="container">
          <div class="row" style="margin-top:30px">
             <div class="col-md-4 col-md-offset-6">
+               @if(session('message'))
+                  <h4 class="alert alert-warning mb-2" >{{ session('message') }}</h4>
+               @endif
                <h4>Patient Information </h4><hr>
 
                <form action="{{ url('update_patient/'.$patient->id()) }}" method="POST">
@@ -24,13 +27,13 @@
                  
                <div class="form-group">
                      <label>Name</label>
-                     <input type="text" name="name" class="form-control" name='name' value="{{ $patient['name']}}"disabled >
+                     <input type="text" name="name" class="form-control" name='name' value="{{ $patient['name']}}" readonly >
                      
                   </div>
 
                   <div class="form-group">
                      <label>email</label>
-                     <input type="text" name="name" class="form-control"  value="{{ $patient['email']}}"disabled readonly>
+                     <input type="text" name="name" class="form-control"  value="{{ $patient['email']}}" readonly>
                      
                   </div>
 
@@ -41,9 +44,19 @@
                   </div>
                   <div class="form-group">
                     <label>Address</label>
-                    <input type="text" name="address" class="form-control"  name="address" value="{{ $patient['address'] }}">
+                    <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }}">
                   </div>
                
+                  <div class="form-group">
+                     <label>Start Date</label>
+                     <input type="date" class="form-control" name="startD" value="{{ $patient['startD'] }}">
+                     
+                  </div> 
+                  <div class="form-group">
+                     <label>End Date</label>
+                     <input type="date" class="form-control" name="endD" value="{{ $patient['endD'] }}">
+                     
+                  </div> 
                   <div class="form-group">
                      <label>Quarantine Day</label>
                      <input type="number" class="form-control" name="quarantineDuration" value="{{ $patient['quarantineDuration'] }}">

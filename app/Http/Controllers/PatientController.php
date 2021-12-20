@@ -12,7 +12,7 @@ use Session;
 class PatientController extends Controller
 {
 
-    public function displayinfo(){
+public function displayinfo(){
         $patient = app('firebase.firestore')->database()->collection('patients')->documents();
          
 
@@ -35,19 +35,24 @@ public function update(Request $request,$id)
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->update([
     ['path'=> 'address','value'=>$request->address],
     ['path'=> 'quarantineDuration','value'=>$request->quarantineDuration],
+    ['path'=> 'startD','value'=>$request->startD],
+    ['path'=> 'endD','value'=>$request->endD],
   ]);
-      return back();
- 
- 
+      if($patient){
+        return back()->with('message','Update Successfully');
+      }else{
+        return back()->with('message','Update fail');
+      }
 }
 
 public function destroy($id)
 {
-  //
-  app('firebase.firestore')->database()->collection('patients')->document($id)->delete();
-  return back();
+  
+   app('firebase.firestore')->database()->collection('patients')->document($id)->delete();
+   
+  return back()->with('messageD','Delete successfully');
+  
 }
-
 
 public function trackpatients(){
 
