@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -43,28 +43,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register HealthCare Authority') }}</a>
                                 </li>
-                            @endif
+                            -->
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-
-                          <li class="nav-item">
-                              <a class="nav-link text-dark" href="home/profile">{{ __('Profile') }}</a>
-                          </li>
-
-                          
-                          <li class="nav-item">
-                              <a class="nav-link text-dark" href="{{ url('register1') }}">{{ __('| Manage Healthcare Admin |') }}</a>
-                          </li>
 
                           <li class="nav-item">
                             <a class="nav-link text-dark" href="{{ route('logout') }}"
@@ -78,7 +62,7 @@
                               </li>
                             </div>
                           </li>
-                        @endguest
+                      
                     </ul>
                 </div>
             </div>

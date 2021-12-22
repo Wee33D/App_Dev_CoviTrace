@@ -42,3 +42,15 @@ Route::get('deleteP/{id}', [PatientController::class, 'destroy']);
 Route::get('viewP/{id}', [PatientController::class, 'view']);
 Route::post('update_patient/{id}', [PatientController:: class, 'update']);
 
+Route::get('/register1',[App\Http\Controllers\HealthAdminController::class, 'register1'])->name('register1');
+Route::get('/register1',[App\Http\Controllers\HealthAdminController::class, 'displayAdmininfo']);
+Route::post('/auth/save1',[App\Http\Controllers\HealthAdminController::class, 'save1'])->name('auth.save1');
+
+Route::get('viewA/{id}', [App\Http\Controllers\HealthAdminController::class, 'view']);
+Route::get('deleteA/{id}', [App\Http\Controllers\HealthAdminController::class, 'destroy']);
+Route::post('update_admin/{id}', [App\Http\Controllers\HealthAdminController:: class, 'update']);
+
+
+Route::get('/homemaster', function (){
+    return view('/homemaster');
+});
