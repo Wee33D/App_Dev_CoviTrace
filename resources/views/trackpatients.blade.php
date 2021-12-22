@@ -45,8 +45,8 @@
                 <td>{{$list->data()['name']}}</td>
                 <td >{{$list->data()['phoneno']}}</td>
                 <td>{{$list->data()['address']}}</td>
-                <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
                 <td class="text-center">{{$list->data()['radius']}}</td>
+                <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
             </tr>
             @endforeach
             <tbody id="tbody">

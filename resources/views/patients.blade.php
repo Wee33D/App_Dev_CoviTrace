@@ -19,7 +19,9 @@
     <div class="container" style="margin-top: 30px;">
 
         <h3 class="text-center">Manage Patient </h3><br>
-    
+        @if(session('messageD'))
+                  <h4 class="alert alert-warning mb-2" >{{ session('messageD') }}</h4>
+               @endif
         <h4> Patient List</h4>
         <h6>Total patient: {{ $patient->size() }}</h6>
         <table class="table table-bordered">
