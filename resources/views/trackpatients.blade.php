@@ -26,15 +26,17 @@
     
         
         <h4> Patient List</h4>
-        <h6>Total patient: {{ $patient->size() }}</h6>
+        {{-- <h6>Total patient: {{ $patient->size() }}</h6> --}}
         <table class="table table-bordered">
             <tr>
                 
                 <th class="text-center">Name</th>
                 <th class="text-center">Phone No.</th>
                 <th class="text-center">Address </th>
-                <th width="180" class="text-center">Travel Radius(km)</th>
+                <th width="180" class="text-center">Distance From Quarantine Location</th>
+                {{-- <th> Status</th> --}}
                 <th width="180" class="text-center">Days Left</th>
+                
             </tr>
             @foreach($patient as $list)
             @if ($list)
@@ -46,7 +48,9 @@
                 <td >{{$list->data()['phoneno']}}</td>
                 <td>{{$list->data()['address']}}</td>
                 <td class="text-center">{{$list->data()['radius']}}</td>
+                {{-- <td>{{$list->data()['Status']}}</td> --}}
                 <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
+                
             </tr>
             @endforeach
             <tbody id="tbody">

@@ -30,6 +30,7 @@
                 <th>Name</th>
                 <th>Phone No.</th>
                 <th>Address </th>
+                <th>Quarantine Location</th>
                 <th width="180">Quarantine Day</th>
                 <th width="180" class="text-center">Action</th>
             </tr>
@@ -40,6 +41,7 @@
                 <td>{{$list->data()['name']}}</td>
                 <td>{{$list->data()['phoneno']}}</td>
                 <td>{{$list->data()['address']}}</td>
+                <td></td>
                 <td class="text-center">{{$list->data()['quarantineDuration']}} </td>
                 <td>  <a href="{{ url('viewP/'.$list->id()) }}" type="button"  class="btn btn-primary btn-update" >View</a>
                     <a href="{{ url('deleteP/'.$list->id()) }}" type="button" class="btn btn-primary btn-danger ">Delete</a></td>
