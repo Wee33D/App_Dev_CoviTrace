@@ -8,6 +8,10 @@ use Kreait\Firebase\ServiceAccount;
 use Kreait\Firebase\Auth;
 use Kreait\Firebase\Exception\FirebaseException;
 use Session;
+use PDF;
+use Mail;
+use DateTime;
+
 
 class PatientController extends Controller
 {
@@ -22,6 +26,7 @@ public function displayinfo(){
 
 public function view($id)
 {
+  
     
     $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
 
@@ -29,14 +34,16 @@ public function view($id)
 }
 
 
+
+
 public function update(Request $request,$id)
 {
   
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->update([
-    ['path'=> 'address','value'=>$request->address],
+    ['path'=> 'address','value'=> $request->address],
     ['path'=> 'quarantineDuration','value'=>$request->quarantineDuration],
-    ['path'=> 'startD','value'=>$request->startD],
-    ['path'=> 'endD','value'=>$request->endD],
+    ['path'=> 'startD','value'=> $request->startD ],
+    ['path'=> 'endD','value'=> $request->endD ],
   ]);
       if($patient){
         return back()->with('message','Update Successfully');

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PdfController;
+use Dompdf\Dompdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,10 @@ Route::get('/trackpatients', [PatientController::class, 'trackpatients']);
 Route::get('deleteP/{id}', [PatientController::class, 'destroy']);
 Route::get('viewP/{id}', [PatientController::class, 'view']);
 Route::post('update_patient/{id}', [PatientController:: class, 'update']);
+
+Route::get('generateP/{id}', [PdfController::class, 'viewLetter']);
+Route::post('submit_pdf/{id}', [PdfController:: class, 'store_letter']);
+// Route::get('downloadpdf/{id}', [PdfController::class, 'downloadPDF']);
 
 Route::get('/register1',[App\Http\Controllers\HealthAdminController::class, 'register1'])->name('register1');
 Route::get('/register1',[App\Http\Controllers\HealthAdminController::class, 'displayAdmininfo']);
