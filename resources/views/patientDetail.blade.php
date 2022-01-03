@@ -58,12 +58,12 @@
                
                   <div class="form-group">
                      <label>Start Date</label>
-                     <input type="date" class="form-control" name="startD" value="{{ $patient['startD'] }}">
+                     <input type="text" class="form-control" name="startD"  value="{{ $patient['startD'] }}" readonly>
                      
                   </div> 
                   <div class="form-group">
                      <label>End Date</label>
-                     <input type="date" class="form-control" name="endD" value="{{ $patient['endD'] }}">
+                     <input type="datetime" class="form-control" name="endD"  value="{{ $patient['endD'] }}">
                      
                   </div> 
                   <div class="form-group">
@@ -73,7 +73,8 @@
                   </div> 
                   <br>
                   <a href="{{ url('patients') }}" class="btn btn-sm btn-danger float-end">Back</a>
-                  <button type="submit" name="register_btn" class="btn btn-primary">Update</button>
+                  <button type="submit" name="register_btn" class="btn btn-success">Update</button>
+                  
                   <br>
                   
                </form>
