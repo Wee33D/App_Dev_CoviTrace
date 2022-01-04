@@ -46,34 +46,19 @@
                     <label>Address</label>
                     <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }}">
                   </div>
-
-                  <div class="form-group">
-                     <label>Name</label>
-                     <input type="text" name="name" class="form-control" name='name' value="{{ $patient['name']}}" readonly >
-                     
-                  </div>
-
-                  <div class="form-group">
-                    <label>Quarantine Location</label><br>
-                    <input type="text" name="name" class="form-control" name='name' value="{{ $patient['Quarantine Location']}}" readonly ><br>
-                    <input type="radio" id="maeps" name="quarantineLocation" value="MAEPS">
-                    <label for="html">MAEPS, Serdang</label><br>
-                    <input type="radio" id="sgbuloh" name="quarantineLocation" value="Hosp Sungai Buloh">
-                    <label for="css">Hospital Sungai Buloh</label><br>
-                  </div>
                
                   <div class="form-group">
                      <label>Start Date</label>
-                     <input type="date" class="form-control" name="startD" value="{{ $patient['startD'] }}">
-               
-                  <div class="form-group">
-                     <label>Start Date</label>
-                     <input type="date" class="form-control" name="startD"  value="{{ $patient['startD'] }}" readonly>
+
+                     <input type="text" class="form-control" name="startD"  value="{{ $patient['startD'] }}" readonly>
+
+                    
+
                      
                   </div> 
                   <div class="form-group">
                      <label>End Date</label>
-                     <input type="date" class="form-control" name="endD" value="{{ $patient['endD'] }}">
+                     <input type="datetime" class="form-control" name="endD"  value="{{ $patient['endD'] }}">
                      
                   </div> 
                   <div class="form-group">
@@ -84,6 +69,9 @@
                   <br>
                   <a href="{{ url('patients') }}" class="btn btn-sm btn-danger float-end">Back</a>
                   <button type="submit" name="register_btn" class="btn btn-success">Update</button>
+
+                  
+
                   <br>
                   
                </form>

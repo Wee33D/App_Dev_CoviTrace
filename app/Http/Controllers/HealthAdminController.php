@@ -43,9 +43,12 @@ class HealthAdminController extends Controller
     
       try{
       $password = 'admin1234';
+      $level = 2;
+      
       $authRef = app('firebase.auth')->createUser([
       'email'    =>$request->email,
-      'password' => $password 
+      'password' => $password,
+      'level' => $level
       ]);
 
      //  $actionCodeSettings = [  

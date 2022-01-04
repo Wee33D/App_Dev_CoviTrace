@@ -47,3 +47,6 @@ class PdfController extends Controller
 
 
 }
+
+
+
