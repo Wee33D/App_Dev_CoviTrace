@@ -31,19 +31,8 @@ class HomeController extends Controller
       // FirebaseAuth.getInstance().getCurrentUser();
       try {
         $uid = Session::get('uid');
-        // $level = Session::get('level');
-
-
         $user = app('firebase.auth')->getUser($uid);
-  
-
-        if($uid == "FqxeAW8pZ5UAeXLTIEawYFHLEda2"){
-        return view('home2');
-        }
-
         return view('home');
-
-
       } catch (\Exception $e) {
         return $e;
       }
