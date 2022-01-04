@@ -39,10 +39,24 @@ public function view($id)
 
 public function update(Request $request,$id)
 {
+  $quarantine = $request->quarantineLocation;
   
+  if($quarantine=="MAEPS"){
+    $qlat=2.9794;
+    $qlong=101.6977;
+  }
+
+  if($quarantine=="Hospital Sungai Buloh"){
+    $qlat=3.2196;
+    $qlong=101.5831;
+  }
+
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->update([
     ['path'=> 'address','value'=> $request->address],
     ['path'=> 'quarantineDuration','value'=>$request->quarantineDuration],
+    ['path'=> 'Quarantine Location','value'=>$request->quarantineLocation],
+    ['path'=> 'qlatitude','value'=>$qlat],
+    ['path'=> 'qlongitude','value'=>$qlong],
     ['path'=> 'startD','value'=> $request->startD ],
     ['path'=> 'endD','value'=> $request->endD ],
   ]);
