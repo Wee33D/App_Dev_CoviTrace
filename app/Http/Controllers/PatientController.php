@@ -8,11 +8,15 @@ use Kreait\Firebase\ServiceAccount;
 use Kreait\Firebase\Auth;
 use Kreait\Firebase\Exception\FirebaseException;
 use Session;
+use PDF;
+use Mail;
+use DateTime;
 
 class PatientController extends Controller
 {
 
 public function displayinfo(){
+
         $patient = app('firebase.firestore')->database()->collection('patients')->documents();
          
 
