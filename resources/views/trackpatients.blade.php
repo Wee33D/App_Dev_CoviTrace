@@ -33,8 +33,8 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Phone No.</th>
                 <th class="text-center">Address </th>
-                <th width="180" class="text-center">Distance From Quarantine Location</th>
-                {{-- <th> Status</th> --}}
+                <th width="180" class="text-center">Quarantine Location</th>
+                {{-- <th>Status</th> --}}
                 <th width="180" class="text-center">Days Left</th>
                 
             </tr>
@@ -47,7 +47,7 @@
                 <td>{{$list->data()['name']}}</td>
                 <td >{{$list->data()['phoneno']}}</td>
                 <td>{{$list->data()['address']}}</td>
-                <td class="text-center">{{$list->data()['radius']}}</td>
+                <td class="text-center">{{$list->data()['Quarantine Location']}}</td>
                 {{-- <td>{{$list->data()['Status']}}</td> --}}
                 <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
                 

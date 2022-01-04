@@ -40,31 +40,6 @@ public function update(Request $request,$id)
       $latitude=3.2203;
       $longitude=101.5829;
     }
-
-    $url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($lat).','.trim($lng).'&sensor=false';
-     $json = @file_get_contents($url);
-     $data=json_decode($json);
-     $status = $data->status;
-     if($status=="OK")
-     {
-       return $data->results[0]->formatted_address;
-     }
-     else
-     {
-       return false;
-     }
-
-      $lat= 26.754347; //latitude
-      $lng= 81.001640; //longitude
-      $address= getaddress($lat,$lng);
-      if($address)
-      {
-        echo $address;
-      }
-      else
-      {
-        echo "Not found";
-      }
   
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->update([
     ['path'=> 'address','value'=>$request->address],
@@ -84,6 +59,8 @@ public function update(Request $request,$id)
     
 }
 
+
+
 public function destroy($id)
 {
   
@@ -96,6 +73,10 @@ public function destroy($id)
 public function trackpatients(){
 
   $patient = app('firebase.firestore')->database()->collection('patients')->documents(); 
+
+  // lat 100, +- 50 -> radius location quarantine
+  // 
+
 
 return view('trackpatients')->with(compact('patient'));
 }
