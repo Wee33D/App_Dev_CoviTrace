@@ -48,7 +48,9 @@
                                     <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register HealthCare Authority') }}</a>
                                 </li>
                             -->
-
+                            <li class="nav-item">
+                              <a class="nav-link text-dark" href="{{ url('register1') }}">{{ __('Manage Healthcare Admin |') }}</a>
+                          </li>
 
                           <li class="nav-item">
                             <a class="nav-link text-dark" href="{{ route('logout') }}"
