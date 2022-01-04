@@ -17,6 +17,7 @@ class PatientController extends Controller
 {
 
 public function displayinfo(){
+
         $patient = app('firebase.firestore')->database()->collection('patients')->documents();
          
 

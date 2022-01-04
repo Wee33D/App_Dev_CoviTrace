@@ -49,7 +49,11 @@
                
                   <div class="form-group">
                      <label>Start Date</label>
+
                      <input type="text" class="form-control" name="startD"  value="{{ $patient['startD'] }}" readonly>
+
+                    
+
                      
                   </div> 
                   <div class="form-group">
@@ -65,7 +69,9 @@
                   <br>
                   <a href="{{ url('patients') }}" class="btn btn-sm btn-danger float-end">Back</a>
                   <button type="submit" name="register_btn" class="btn btn-success">Update</button>
+
                   
+
                   <br>
                   
                </form>
