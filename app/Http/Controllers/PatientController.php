@@ -16,6 +16,17 @@ use DateTime;
 class PatientController extends Controller
 {
 
+public function search(Request $request){
+
+  $search = $request->input('search');
+  $patient = app('firebase.firestore')->database()->collection('patients')
+          ->orderBy('quarantineDuration','asc')
+          ->startAt([$search])
+          ->endAt([$search."\uf8ff"]);
+
+          return view('patients')->with(compact('patient'));
+}
+
 public function displayinfo(){
 
         $patient = app('firebase.firestore')->database()->collection('patients')->documents();
@@ -53,13 +64,10 @@ public function update(Request $request,$id)
   }
 
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->update([
-    ['path'=> 'address','value'=> $request->address],
     ['path'=> 'quarantineDuration','value'=>$request->quarantineDuration],
     ['path'=> 'Quarantine Location','value'=>$request->quarantineLocation],
     ['path'=> 'qlatitude','value'=>$qlat],
     ['path'=> 'qlongitude','value'=>$qlong],
-    ['path'=> 'startD','value'=> $request->startD ],
-    ['path'=> 'endD','value'=> $request->endD ],
   ]);
       if($patient){
         return back()->with('message','Update Successfully');

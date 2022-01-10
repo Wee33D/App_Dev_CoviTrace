@@ -44,7 +44,7 @@
                   </div>
                   <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }}">
+                    <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }} " readonly>
                   </div>
 
                   <div class="form-group">
@@ -60,17 +60,13 @@
                
                   <div class="form-group">
                      <label>Start Date</label>
-{{-- 
-                     <input type="text" class="form-control" name="startD"  value="{{ $patient['startD'] }}" readonly>
-                     --}}
 
-                     
                      <input type="text" class="form-control" name="startD"  value="{{ \Carbon\Carbon::parse($patient['startD'])->format('d/m/Y')}}" readonly>
                     
                   </div> 
                   <div class="form-group">
                      <label>End Date</label>
-                     <input type="text" class="form-control" name="endD"  value="{{ \Carbon\Carbon::parse($patient['endD'])->format('d/m/Y')}}">
+                     <input type="text" class="form-control" name="endD"  value="{{ \Carbon\Carbon::parse($patient['endD'])->format('d/m/Y')}}" >
                      
                   </div> 
                   <div class="form-group">
