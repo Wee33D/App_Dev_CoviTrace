@@ -33,7 +33,7 @@
                 <th class="text-center">Name</th>
                 <th class="text-center">Phone No.</th>
                 <th class="text-center">Address </th>
-                <th width="180" class="text-center">Travel Radius(km)</th>
+                <th width="180" class="text-center">Quarantine Location</th>
                 <th width="180" class="text-center">Days Left</th>
             </tr>
             @foreach($patient as $list)
@@ -45,7 +45,7 @@
                 <td>{{$list->data()['name']}}</td>
                 <td >{{$list->data()['phoneno']}}</td>
                 <td>{{$list->data()['address']}}</td>
-                <td class="text-center">{{$list->data()['radius']}}</td>
+                <td class="text-center">{{$list->data()['Quarantine Location']}}</td>
                 <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
             </tr>
             @endforeach

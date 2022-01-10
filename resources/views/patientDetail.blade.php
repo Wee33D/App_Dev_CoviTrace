@@ -46,6 +46,17 @@
                     <label>Address</label>
                     <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }}">
                   </div>
+
+                  <div class="form-group">
+                     <label>Quarantine Location</label>
+                     <input type="text" class="form-control"  name="quarantineLocation" value="{{ $patient['Quarantine Location'] }}" readonly><br>
+                     
+                     <input type="radio" id="MAEPS" name="quarantineLocation" value="MAEPS">
+                     <label for="html">MAEPS</label><br>
+                     <input type="radio" id="Hosp Sg. Buloh" name="quarantineLocation" value="Hospital Sungai Buloh">
+                     <label for="css">Hospital Sungai Buloh</label><br>
+                     
+                   </div>
                
                   <div class="form-group">
                      <label>Start Date</label>
