@@ -31,6 +31,7 @@ public function view($id)
     
     $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
 
+
   return view('patientDetail', compact('patient','id'));
 }
 
