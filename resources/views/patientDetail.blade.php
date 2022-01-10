@@ -44,7 +44,9 @@
                   </div>
                   <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }} " readonly>
+
+                    <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }}" readonly>
+
                   </div>
 
                   <div class="form-group">
