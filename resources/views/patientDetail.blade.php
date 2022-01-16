@@ -63,17 +63,23 @@
                   <div class="form-group">
                      <label>Start Date</label>
 
-                     <input type="text" class="form-control" name="startD"  value="{{ \Carbon\Carbon::parse($patient['startD'])->format('d/m/Y')}}" readonly>
+                     <input type="text" class="form-control" name="startD"  value="{{ \Carbon\Carbon::parse($patient['startD'])->toFormattedDateString()}}" readonly>
                     
                   </div> 
                   <div class="form-group">
                      <label>End Date</label>
-                     <input type="text" class="form-control" name="endD"  value="{{ \Carbon\Carbon::parse($patient['endD'])->format('d/m/Y')}}" >
+                     <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($patient['endD'])->toFormattedDateString()}}" readonly >
+                     
+                  </div> 
+
+                  <div class="form-group">
+                     <label>New End Date</label>
+                     <input type="date" class="form-control" name="endD"value="{{ $patient['endD'] }}">
                      
                   </div> 
                   <div class="form-group">
                      <label>Quarantine Day</label>
-                     <input type="number" class="form-control" name="quarantineDuration" value="{{ $patient['quarantineDuration'] }}">
+                     <input type="text" class="form-control" name="quarantineDuration" value="{{ $patient['quarantineDuration'] }} " readonly>
                      
                   </div> 
                   <br>

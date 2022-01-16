@@ -8,7 +8,7 @@
     </style>
   </head>
   <body>
-  <img src="{{ URL::to('/img/kobid1.png') }}" style="width: 20px; height: 20px"/>
+  <img src="{{ URL::to('/img/iconApp.PNG') }}" style="width: 20px; height: 20px"/>
    <h2>Quarantine Notice Letter</h2>
    
    <h3>Quarantine Date End: {{ $endD }}</h3>

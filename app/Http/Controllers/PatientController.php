@@ -7,6 +7,9 @@ use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 use Kreait\Firebase\Auth;
 use Kreait\Firebase\Exception\FirebaseException;
+use Kreait\Firebase\Firestore\Timestmap;
+use Google\Cloud\Core\Timestamp;
+use Carbon\Carbon;
 use Session;
 use PDF;
 use Mail;
@@ -42,11 +45,8 @@ public function view($id)
     $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
 
 
-  return view('patientDetail', compact('patient','id'));
+    return view('patientDetail')->with(compact('patient','id'));
 }
-
-
-
 
 public function update(Request $request,$id)
 {
@@ -90,6 +90,10 @@ public function update(Request $request,$id)
     $status = "In";
   }
 
+ $start = Carbon::parse($request->startD);
+ $end = Carbon::parse($request->endD);
+ $day = $start->diffInDays($end);
+  
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->update([
 
     ['path'=> 'Quarantine Location','value'=>$request->quarantineLocation],
@@ -97,6 +101,10 @@ public function update(Request $request,$id)
     ['path'=> 'qlongitude','value'=>$qlong],
     ['path'=> 'radius','value'=>0.00539957],
     ['path'=> 'status','value'=>$status],
+    ['path'=> 'endD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->endD)))) ],
+    ['path'=> 'quarantineDuration','value'=>$day],
+    
+    
     
   ]);
       if($patient){
