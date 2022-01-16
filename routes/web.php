@@ -35,6 +35,8 @@ Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::cl
 Route::resource('/img', App\Http\Controllers\ImageController::class);
 
 Route::get('/patients', [PatientController::class, 'displayinfo'])->name('patients');
+Route::get('/history', [PatientController::class, 'displayHistory'])->name('patients');
+Route::get('viewL/{id}', [PdfController::class, 'viewPDF']);
 
 Route::get('/trackpatients', [PatientController::class, 'trackpatients']);
 Route::get('/search', [PatientController::class, 'search']);

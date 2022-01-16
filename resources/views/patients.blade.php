@@ -13,6 +13,13 @@
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
+
+<style>
+    .history{
+        text-align: right;
+    }
+    </style>
+
 </head>
 
 <body>
@@ -22,6 +29,14 @@
         @if(session('messageD'))
                   <h4 class="alert alert-warning mb-2" >{{ session('messageD') }}</h4>
                @endif
+        
+
+        <div class="history">
+             <a href="/history" type="button" style="text-align: right;" class="btn btn-primary btn-success ">HISTORY</a>
+       </div>
+
+       <h4> Patient List</h4>
+       <h6>Total patient: {{ $patient->size() }}</h6>
         {{-- <form  method="get" action="{{ url('/search') }}">
             <div class="form-group">
                 <input type="search" name="search" class="form-control">

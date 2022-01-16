@@ -21,21 +21,16 @@ class HealthAdminController extends Controller
         return view('register1');
     }
 
-    // function save1(Request $request){
-    //     $stuRef = app('firebase.firestore')->database()->collection('Healthcare Authority')->newDocument();
-    //     $stuRef->set([
-    //     'first_name' =>$request->first_name,
-    //     'last_name' =>$request->last_name,
-    //     'email'    =>$request->email
-    //     ]);
-
-    //     return back()->with('success','New Admin has been successfuly');
-
-    //  }
     function save1(Request $request){
+      // $validator = Validator::make(request->all(),[
+      //   'first_name' => 'required|unique:posts|max:255',
+      //   'last_name' =>'required|unique:posts|max:255',
+      //   'email' => 'required|email'
+
+      // ]);
+
       $stuRef = app('firebase.firestore')->database()->collection('Healthcare Authority')->newDocument(); 
-      $stuRef->set([   
-        // 'uid' => $authRef->uid,  
+      $stuRef->set([    
         'first_name' =>$request->first_name,
         'last_name' =>$request->last_name, 
         'email'    =>$request->email
@@ -51,13 +46,8 @@ class HealthAdminController extends Controller
       'level' => $level
       ]);
 
-     //  $actionCodeSettings = [  
-     //  'continueUrl' => ''
-     //   ];  
-
     $email = $request->email;
-    app('firebase.auth')->sendEmailVerificationLink($email);
-    // echo $authRef->uid; //This is unique id of inserted user.     
+    app('firebase.auth')->sendEmailVerificationLink($email);   
 
   return back()->with('success','Admin was added successfuly');
    
@@ -70,7 +60,7 @@ catch (\Kreait\Firebase\Exception\Auth\EmailExists $ex) {
   
      public function index()
      {
-       // FirebaseAuth.getInstance().getCurrentUser();
+  
        try {
          $uid = Session::get('uid');
          $user = app('firebase.auth')->getUser($uid);
@@ -99,7 +89,6 @@ catch (\Kreait\Firebase\Exception\Auth\EmailExists $ex) {
   ]);
       return back()->with('success','Admin was updated successfuly');
       
- 
 }
 
    public function destroy($id){
