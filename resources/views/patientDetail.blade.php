@@ -44,28 +44,50 @@
                   </div>
                   <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }}">
+
+                    <input type="text" class="form-control"  name="address" value="{{ $patient['address'] }}" readonly>
+
                   </div>
+
+                  <div class="form-group">
+                     <label>Quarantine Location</label>
+                     <input type="text" class="form-control"  name="quarantineLocation" value="{{ $patient['Quarantine Location'] }}" readonly><br>
+                     
+                     <input type="radio" id="MAEPS" name="quarantineLocation" value="MAEPS">
+                     <label for="html">MAEPS</label><br>
+                     <input type="radio" id="Hosp Sg. Buloh" name="quarantineLocation" value="Hospital Sungai Buloh">
+                     <label for="css">Hospital Sungai Buloh</label><br>
+                     
+                   </div>
                
                   <div class="form-group">
                      <label>Start Date</label>
-                     <input type="text" class="form-control" name="startD"  value="{{ $patient['startD'] }}" readonly>
-                     
+
+                     <input type="text" class="form-control" name="startD"  value="{{ \Carbon\Carbon::parse($patient['startD'])->toFormattedDateString()}}" readonly>
+                    
                   </div> 
                   <div class="form-group">
                      <label>End Date</label>
-                     <input type="datetime" class="form-control" name="endD"  value="{{ $patient['endD'] }}">
+                     <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($patient['endD'])->toFormattedDateString()}}" readonly >
+                     
+                  </div> 
+
+                  <div class="form-group">
+                     <label>New End Date</label>
+                     <input type="date" class="form-control" name="endD"value="{{ $patient['endD'] }}">
                      
                   </div> 
                   <div class="form-group">
                      <label>Quarantine Day</label>
-                     <input type="number" class="form-control" name="quarantineDuration" value="{{ $patient['quarantineDuration'] }}">
+                     <input type="text" class="form-control" name="quarantineDuration" value="{{ $patient['quarantineDuration'] }} " readonly>
                      
                   </div> 
                   <br>
                   <a href="{{ url('patients') }}" class="btn btn-sm btn-danger float-end">Back</a>
                   <button type="submit" name="register_btn" class="btn btn-success">Update</button>
+
                   
+
                   <br>
                   
                </form>

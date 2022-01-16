@@ -37,7 +37,9 @@
 
                  <div class="form-group">
                     <label>Date Quarantine End :</label>
-                    <input type="text" name="endD" class="form-control"  value="{{ $pdf['endD']}}" readonly>
+
+                    <input type="datetime" name="endD" class="form-control"  value="{{ \Carbon\Carbon::parse($pdf['endD'])->format('d/m/Y')}}" readonly>
+
                  </div>
 
                  <div>

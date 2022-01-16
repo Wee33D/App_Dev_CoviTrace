@@ -86,6 +86,7 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'muhammadburn21@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'CoviTrace App'),
+
     ],
 
     /*

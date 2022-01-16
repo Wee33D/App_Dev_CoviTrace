@@ -39,7 +39,7 @@ Route::get('/history', [PatientController::class, 'displayHistory'])->name('pati
 Route::get('viewL/{id}', [PdfController::class, 'viewPDF']);
 
 Route::get('/trackpatients', [PatientController::class, 'trackpatients']);
-
+Route::get('/search', [PatientController::class, 'search']);
 Route::get('deleteP/{id}', [PatientController::class, 'destroy']);
 Route::get('viewP/{id}', [PatientController::class, 'view']);
 Route::post('update_patient/{id}', [PatientController:: class, 'update']);

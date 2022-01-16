@@ -25,7 +25,7 @@
 <body>
     <div class="container" style="margin-top: 30px;">
 
-        <h3 class="text-center">Manage Patient </h3><br>
+        <h3 class="text-center"><b>Manage Patient</b> </h3><br>
         @if(session('messageD'))
                   <h4 class="alert alert-warning mb-2" >{{ session('messageD') }}</h4>
                @endif
@@ -37,6 +37,16 @@
 
        <h4> Patient List</h4>
        <h6>Total patient: {{ $patient->size() }}</h6>
+        {{-- <form  method="get" action="{{ url('/search') }}">
+            <div class="form-group">
+                <input type="search" name="search" class="form-control">
+                <span class="form-group-btn">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </span>
+            </div>
+        </form> --}}
+        <h4> <b>Patient List</b> </h4>
+        <h6>Total patient: {{ $patient->size() }}</h6>
         <table class="table table-bordered">
             <tr>
                 <th>ID</th>
