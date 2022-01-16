@@ -7,6 +7,7 @@ use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 use Kreait\Firebase\Auth;
 use Kreait\Firebase\Exception\FirebaseException;
+use Carbon\Carbon;
 use Session;
 use PDF;
 use Mail;
@@ -38,9 +39,18 @@ class PdfController extends Controller
         
       } 
 
-      public function viewLetter($id){
+      public function viewLetter(Request $request, $id){
     
             $pdf = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
+
+            $end = Carbon::parse($request->startD);
+            $now = date("Y-m-d");
+            
+            if($end->diff($now)->days < 5 ){
+              $isDisable = "";
+            }else{
+              $isDisable = "disabled";
+            }
 
         return view('pdf\NoticeLetter', compact('pdf','id'));
         }
