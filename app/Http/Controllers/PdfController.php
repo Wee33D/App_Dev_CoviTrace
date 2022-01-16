@@ -39,10 +39,21 @@ class PdfController extends Controller
       } 
 
       public function viewLetter($id){
-    
-            $pdf = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
-
+        $pdf = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
         return view('pdf\NoticeLetter', compact('pdf','id'));
+      }
+
+      public function viewPDF(Request $request,$id){
+          $letter = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
+        
+        
+        $data["email"] = $request->email;
+        $data["title"] = "Quarantine Letter";
+        $data["name"] = $request->name;
+        $data["endD"] = $request->endD;
+        $data["body"]=  $request->letter;
+ 
+        $pdf = PDF::loadview('pdf.letterpdf', $data);
         }
 
 
