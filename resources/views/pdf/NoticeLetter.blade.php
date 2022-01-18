@@ -49,7 +49,17 @@
                  
                  <br>
                  <a href="{{ url('patients') }}" class="btn btn-sm btn-danger float-end">Back</a>
-                 <button type="submit" name="generate_btn" class="btn btn-success">Generate</button>
+                 <?php 
+                     $end = \Carbon\Carbon::parse($pdf['endD']);
+                     $now = date("Y-m-d");
+
+                     if($end->diff($now)->days < 5){
+                        $stat= "";
+                     }else{
+                        $stat = "disabled";
+                     }
+                 ?>
+                 <button type="submit" class="btn btn-success"<?= $stat ?> name="generate_btn" >Generate</button>
                  
                  <br>
                  
