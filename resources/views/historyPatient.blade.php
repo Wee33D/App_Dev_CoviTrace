@@ -56,7 +56,9 @@
     
             </tbody>
         </table>
+        <a href="{{ url('patients') }}" class="btn btn-sm btn-danger float-end">Back</a>
     </div>
+    
 
 </body>
 </html>

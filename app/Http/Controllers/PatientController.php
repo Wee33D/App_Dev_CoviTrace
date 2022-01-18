@@ -35,14 +35,19 @@ public function displayinfo(){
   return view('patients')->with(compact('patient'));
 }
 
-        $patient = app('firebase.firestore')->database()->collection('patients')->documents();
+      //   $patient = app('firebase.firestore')->database()->collection('patients')->documents();
          
 
-      return view('patients')->with(compact('patient'));
+      // return view('patients')->with(compact('patient'));
 
 public function displayHistory(){
   $history = app('firebase.firestore')->database()->collection('History')->documents();
+
+
+
+
   return view('historyPatient')->with(compact('history'));
+ 
 }
 
 public function view($id)
@@ -50,11 +55,27 @@ public function view($id)
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
   return view('patientDetail', compact('patient','id'));
   
-    $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
-
-
-    return view('patientDetail')->with(compact('patient','id'));
+  $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
+  return view('patientDetail')->with(compact('patient','id'));
 }
+
+public function viewPDF($id){
+
+  $patient = app('firebase.firestore')->database()->collection('History')->document($id)->snapshot();
+
+  return view('sentLetter')->with(compact('patient','id'));
+
+
+
+  
+ 
+
+  // $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
+  // return view('sentLetter', compact('patient','id'));
+  
+  // $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
+  // return view('sentLetter')->with(compact('patient','id'));
+  }
 
 public function update(Request $request,$id)
 {
