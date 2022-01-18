@@ -116,7 +116,8 @@ public function update(Request $request,$id)
     ['path'=> 'qlongitude','value'=>$qlong],
     ['path'=> 'radius','value'=>0.00539957],
     ['path'=> 'status','value'=>$status],
-    ['path'=> 'endD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->endD)))) ],
+    ['path'=> 'startD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->startD))))],
+    ['path'=> 'endD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->endD))))],
     ['path'=> 'quarantineDuration','value'=>$day],
     
     
