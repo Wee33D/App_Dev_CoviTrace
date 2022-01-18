@@ -64,22 +64,21 @@ public function update(Request $request,$id)
   if($quarantine=="Hospital Sungai Buloh"){
     $qlat=3.2196;
     $qlong=101.5831;
-    // $minlat = 3.2196-0.00539957;
     $minlat = 3.21420043;
     $minlong = 101.57770043;
-    // $minlong = 101.5831-0.00539957;
-    // $maxlat = 3.2196+0.00539957;
     $maxlat = 3.22499957;
     $maxlong = 101.58849957;
-    // $maxlong = 101.5831+0.00539957;
   }
 
   $patientc = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot()->data();
   $patientlat = $patientc['latitude'];
   $patientlong = $patientc['longitude'];
 
-  //compare
-  //
+  if($quarantine=="Home"){
+    $qlat=$patientlat;
+    $qlong=$patientlong;
+  }
+
   if($patientlat<$minlat||$patientlat>$maxlat){
     $status = "Out";
   }
@@ -109,20 +108,20 @@ public function update(Request $request,$id)
 public function destroy($id)
 {
   
-   app('firebase.firestore')->database()->collection('patients')->document($id)->delete();
-   
-  return back()->with('messageD','Delete successfully');
-  
-}
+    app('firebase.firestore')->database()->collection('patients')->document($id)->delete();
+    
+    return back()->with('messageD','Delete successfully');
+    
+  }
 
 public function trackpatients(){
 
-  $patient = app('firebase.firestore')->database()->collection('patients')->documents(); 
-  
+    $patient = app('firebase.firestore')->database()->collection('patients')->documents(); 
+    
 
 
-return view('trackpatients')->with(compact('patient'));
-}
+  return view('trackpatients')->with(compact('patient'));
+  }
 
 
 }
