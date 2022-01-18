@@ -19,16 +19,6 @@ use DateTime;
 class PatientController extends Controller
 {
 
-public function search(Request $request){
-
-  $search = $request->input('search');
-  $patient = app('firebase.firestore')->database()->collection('patients')
-          ->orderBy('quarantineDuration','asc')
-          ->startAt([$search])
-          ->endAt([$search."\uf8ff"]);
-
-          return view('patients')->with(compact('patient'));
-}
 
 public function displayinfo(){
   $patient = app('firebase.firestore')->database()->collection('patients')->documents();
@@ -65,16 +55,6 @@ public function viewPDF($id){
 
   return view('sentLetter')->with(compact('patient','id'));
 
-
-
-  
- 
-
-  // $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
-  // return view('sentLetter', compact('patient','id'));
-  
-  // $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
-  // return view('sentLetter')->with(compact('patient','id'));
   }
 
 public function update(Request $request,$id)
