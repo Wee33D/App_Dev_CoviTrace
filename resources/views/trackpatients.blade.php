@@ -23,13 +23,17 @@
 
         <h3 class="text-center">Track Patients </h3><br>
     
-    
+            
         
         <h4> Patient List</h4>
         <h6>Total patient: {{ $patient->size() }}</h6>
         <table class="table table-bordered">
+
+            
+            
+            
             <tr>
-                
+                <th class="text-center">Number</th>
                 <th class="text-center">Name</th>
                 <th class="text-center">Phone No.</th>
                 <th class="text-center">Address </th>
@@ -39,25 +43,31 @@
                 {{-- <th width="180" class="text-center">Latitude</th>
                 <th width="180" class="text-center">Longitude</th> --}}
             </tr>
+            
             @foreach($patient as $list)
-            @if ($list)
-                
-            @endif
-            <tr>
-                
-                <td>{{$list->data()['name']}}</td>
-                <td >{{$list->data()['phoneno']}}</td>
-                <td>{{$list->data()['address']}}</td>
-                <td class="text-center">{{$list->data()['Quarantine Location']}}</td>
-                <td class="text-center">{{$list->data()['status']}}</td>
-                <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
-                {{-- <td class="text-center">{{$list->data()['latitude']}}</td>
-                <td class="text-center">{{$list->data()['longitude']}}</td> --}}
-            </tr>
+                @if ($list)
+                @endif
+                <tr>
+                    <td><?php echo $i; ?></td>
+                    <td>{{$list->data()['name']}}</td>
+                    <td>{{$list->data()['name']}}</td>
+                    <td >{{$list->data()['phoneno']}}</td>
+                    <td>{{$list->data()['address']}}</td>
+                    <td class="text-center">{{$list->data()['Quarantine Location']}}</td>
+                    <td class="text-center">{{$list->data()['status']}}</td>
+                    <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
+                    {{-- <td>{{$list->data()['name']}}</td>
+                    <td>{{$list->data()['name']}}</td>
+                    <td >{{$list->data()['phoneno']}}</td>
+                    <td>{{$list->data()['address']}}</td>
+                    <td class="text-center">{{$list->data()['Quarantine Location']}}</td>
+                    <td class="text-center">{{$list->data()['status']}}</td>
+                    <td class="text-center">{{$list->data()['quarantineDuration']}}</td> --}}
+                    {{-- <td class="text-center">{{$list->data()['latitude']}}</td>
+                    <td class="text-center">{{$list->data()['longitude']}}</td> --}}
+                </tr>
             @endforeach
-            <tbody id="tbody">
-    
-            </tbody>
+            
         </table>
         
     </div>

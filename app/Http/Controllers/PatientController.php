@@ -35,10 +35,6 @@ public function displayinfo(){
   return view('patients')->with(compact('patient'));
 }
 
-        $patient = app('firebase.firestore')->database()->collection('patients')->documents();
-         
-
-      return view('patients')->with(compact('patient'));
 
 public function displayHistory(){
   $history = app('firebase.firestore')->database()->collection('History')->documents();
@@ -63,7 +59,7 @@ public function update(Request $request,$id)
   ['path'=> 'quarantineDuration','value'=>$request->quarantineDuration],
   ['path'=> 'startD','value'=> $request->startD ],
   ['path'=> 'endD','value'=> $request->endD ],
-]);
+  ]);
   $quarantine = $request->quarantineLocation;
   
   if($quarantine=="MAEPS"){
@@ -82,6 +78,8 @@ public function update(Request $request,$id)
     $minlong = 101.57770043;
     $maxlat = 3.22499957;
     $maxlong = 101.58849957;
+    //radius=0.00539957
+    //radius 20m = 0.01079913
   }
 
   $patientc = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot()->data();
@@ -91,6 +89,10 @@ public function update(Request $request,$id)
   if($quarantine=="Home"){
     $qlat=$patientlat;
     $qlong=$patientlong;
+    $minlat = $qlat-0.01079913;
+    $minlong = $qlong-0.01079913;
+    $maxlat = $qlat+0.01079913;
+    $maxlong = $qlong-0.01079913;
   }
 
   if($patientlat<$minlat||$patientlat>$maxlat){
@@ -112,13 +114,11 @@ public function update(Request $request,$id)
     ['path'=> 'Quarantine Location','value'=>$request->quarantineLocation],
     ['path'=> 'qlatitude','value'=>$qlat],
     ['path'=> 'qlongitude','value'=>$qlong],
-    ['path'=> 'radius','value'=>0.00539957],
+    ['path'=> 'radius','value'=>0.01079913],
     ['path'=> 'status','value'=>$status],
     ['path'=> 'endD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->endD)))) ],
     ['path'=> 'quarantineDuration','value'=>$day],
-    
-    
-    
+
   ]);
       if($patient){
         return back()->with('message','Update Successfully');
@@ -140,7 +140,55 @@ public function trackpatients(){
 
     $patient = app('firebase.firestore')->database()->collection('patients')->documents(); 
     
+    // foreach ($patient as $pesakit){
 
+    //   $quarantine=$pesakit->data()['Quarantine Location']->snapshot();
+    //   $patientlat=$pesakit->data()['latitude']->snapshot();
+    //   $patientlong=$pesakit->data()['longitude']->snapshot();
+
+    //   if($quarantine=="MAEPS"){
+    //     $qlat=2.9794;
+    //     $qlong=101.6977;
+    //     $minlat = 2.9794-0.00539957;
+    //     $minlong = 101.6977-0.00539957;
+    //     $maxlat = 2.9794+0.00539957;
+    //     $maxlong = 101.6977+0.00539957;
+    //   }
+    
+    //   if($quarantine=="Hospital Sungai Buloh"){
+    //     $qlat=3.2196;
+    //     $qlong=101.5831;
+    //     $minlat = 3.21420043;
+    //     $minlong = 101.57770043;
+    //     $maxlat = 3.22499957;
+    //     $maxlong = 101.58849957;
+    //   }
+
+    //   if($quarantine=="Home"){
+    //     $qlat=$patientlat;
+    //     $qlong=$patientlong;
+    //     $minlat = $qlat-0.01079913;
+    //     $minlong = $qlong-0.01079913;
+    //     $maxlat = $qlat+0.01079913;
+    //     $maxlong = $qlong-0.01079913;
+    //   }
+
+    //   if($patientlat<$minlat||$patientlat>$maxlat){
+    //     $status = "Out";
+    //   }
+    //   else if($patientlong<$minlong||$patientlong>$maxlong){
+    //     $status = "Out";
+    //   }
+    //   else{
+    //     $status = "In";
+    //   }
+
+    //   $patient = app('firebase.firestore')->database()->collection('patients')->document()->update([
+    //     ['path'=> 'status','value'=>$status],
+    
+    //   ]);
+
+    // }
 
   return view('trackpatients')->with(compact('patient'));
   }
