@@ -48,7 +48,7 @@
                 @if ($list)
                 @endif
                 <tr>
-                    <td><?php echo $i; ?></td>
+                    
                     <td>{{$list->data()['name']}}</td>
                     <td>{{$list->data()['name']}}</td>
                     <td >{{$list->data()['phoneno']}}</td>
