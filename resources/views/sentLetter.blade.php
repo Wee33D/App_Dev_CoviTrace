@@ -38,7 +38,7 @@
                     </div><br>
                     
                     <div class="content">
-                        <h3>Subject: Quanrantine Notice Letter</h3>
+                        <h3>Subject: Quarantine Notice Letter</h3>
                      <h1>Dear {{ $patient['name']}},</h1>
                      <h1>Your quarantine period will end on <b>{{ $patient['endD']}}</b>.
                      <h1>{{ $patient['letter']}}</h1> 
