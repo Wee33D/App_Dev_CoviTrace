@@ -19,16 +19,6 @@ use DateTime;
 class PatientController extends Controller
 {
 
-public function search(Request $request){
-
-  $search = $request->input('search');
-  $patient = app('firebase.firestore')->database()->collection('patients')
-          ->orderBy('quarantineDuration','asc')
-          ->startAt([$search])
-          ->endAt([$search."\uf8ff"]);
-
-          return view('patients')->with(compact('patient'));
-}
 
 public function displayinfo(){
   $patient = app('firebase.firestore')->database()->collection('patients')->documents();
@@ -36,9 +26,12 @@ public function displayinfo(){
 }
 
 
+
 public function displayHistory(){
   $history = app('firebase.firestore')->database()->collection('History')->documents();
+
   return view('historyPatient')->with(compact('history'));
+ 
 }
 
 public function view($id)
@@ -46,11 +39,17 @@ public function view($id)
   $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
   return view('patientDetail', compact('patient','id'));
   
-    $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
-
-
-    return view('patientDetail')->with(compact('patient','id'));
+  $patient = app('firebase.firestore')->database()->collection('patients')->document($id)->snapshot();
+  return view('patientDetail')->with(compact('patient','id'));
 }
+
+public function viewPDF($id){
+
+  $patient = app('firebase.firestore')->database()->collection('History')->document($id)->snapshot();
+
+  return view('sentLetter')->with(compact('patient','id'));
+
+  }
 
 public function update(Request $request,$id)
 {
@@ -116,7 +115,8 @@ public function update(Request $request,$id)
     ['path'=> 'qlongitude','value'=>$qlong],
     ['path'=> 'radius','value'=>0.01079913],
     ['path'=> 'status','value'=>$status],
-    ['path'=> 'endD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->endD)))) ],
+    ['path'=> 'startD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->startD))))],
+    ['path'=> 'endD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->endD))))],
     ['path'=> 'quarantineDuration','value'=>$day],
 
   ]);

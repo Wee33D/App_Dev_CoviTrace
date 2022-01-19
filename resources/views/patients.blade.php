@@ -35,16 +35,6 @@
              <a href="/history" type="button" style="text-align: right;" class="btn btn-primary btn-success ">HISTORY</a>
        </div>
 
-       <h4> Patient List</h4>
-       <h6>Total patient: {{ $patient->size() }}</h6>
-        {{-- <form  method="get" action="{{ url('/search') }}">
-            <div class="form-group">
-                <input type="search" name="search" class="form-control">
-                <span class="form-group-btn">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </span>
-            </div>
-        </form> --}}
         <h4> <b>Patient List</b> </h4>
         <h6>Total patient: {{ $patient->size() }}</h6>
         <table class="table table-bordered">
