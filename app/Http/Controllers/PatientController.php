@@ -129,7 +129,6 @@ public function update(Request $request,$id)
 
 public function destroy($id)
 {
-  
     app('firebase.firestore')->database()->collection('patients')->document($id)->delete();
     
     return back()->with('messageD','Delete successfully');

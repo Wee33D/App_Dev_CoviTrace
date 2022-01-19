@@ -40,8 +40,6 @@
                 <th width="180" class="text-center">Quarantine Location</th>
                 <th width="180" class="text-center">Status</th>
                 <th width="180" class="text-center">Days Left</th>
-                {{-- <th width="180" class="text-center">Latitude</th>
-                <th width="180" class="text-center">Longitude</th> --}}
             </tr>
             
             @foreach($patient as $list)
@@ -54,17 +52,58 @@
                     <td >{{$list->data()['phoneno']}}</td>
                     <td>{{$list->data()['address']}}</td>
                     <td class="text-center">{{$list->data()['Quarantine Location']}}</td>
-                    <td class="text-center">{{$list->data()['status']}}</td>
+                    <td class="text-center">
+
+                    <?php 
+                    $quarantine=$list->data()['Quarantine Location'];
+                    $patientlat=$list->data()['latitude'];
+                    $patientlong=$list->data()['longitude'];
+
+                    if($quarantine=="MAEPS"){
+                        $qlat=2.9794;
+                        $qlong=101.6977;
+                        $minlat = 2.9794-0.00539957;
+                        $minlong = 101.6977-0.00539957;
+                        $maxlat = 2.9794+0.00539957;
+                        $maxlong = 101.6977+0.00539957;
+                    }
+
+                    if($quarantine=="Hospital Sungai Buloh"){
+                        $qlat=3.2196;
+                        $qlong=101.5831;
+                        $minlat = 3.21420043;
+                        $minlong = 101.57770043;
+                        $maxlat = 3.22499957;
+                        $maxlong = 101.58849957;
+                        //radius=0.00539957
+                        //radius 20m = 0.01079913
+                    }
+
+                    if($quarantine=="Home"){
+                        $qlat=$patientlat;
+                        $qlong=$patientlong;
+                        $minlat = $qlat-0.01079913;
+                        $minlong = $qlong-0.01079913;
+                        $maxlat = $qlat+0.01079913;
+                        $maxlong = $qlong-0.01079913;
+                    }
+
+                    if($patientlat<$minlat||$patientlat>$maxlat){
+                        $status = "Out";
+                    }
+                    else if($patientlong<$minlong||$patientlong>$maxlong){
+                        $status = "Out";
+                    }
+                    else{
+                        $status = "In";
+                    }
+                    
+                    echo $status;
+                    ?>
+                    
+                    </td>
                     <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
-                    {{-- <td>{{$list->data()['name']}}</td>
-                    <td>{{$list->data()['name']}}</td>
-                    <td >{{$list->data()['phoneno']}}</td>
-                    <td>{{$list->data()['address']}}</td>
-                    <td class="text-center">{{$list->data()['Quarantine Location']}}</td>
-                    <td class="text-center">{{$list->data()['status']}}</td>
-                    <td class="text-center">{{$list->data()['quarantineDuration']}}</td> --}}
-                    {{-- <td class="text-center">{{$list->data()['latitude']}}</td>
-                    <td class="text-center">{{$list->data()['longitude']}}</td> --}}
+                    
                 </tr>
             @endforeach
             
