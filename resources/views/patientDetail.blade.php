@@ -57,6 +57,8 @@
                      <label for="html">MAEPS</label><br>
                      <input type="radio" id="Hosp Sg. Buloh" name="quarantineLocation" value="Hospital Sungai Buloh">
                      <label for="css">Hospital Sungai Buloh</label><br>
+                     <input type="radio" id="home" name="quarantineLocation" value="Home">
+                     <label for="css">Home Quarantine</label><br>
                      
                    </div>
                
