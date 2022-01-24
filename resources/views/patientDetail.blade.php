@@ -76,8 +76,9 @@
 
                   <div class="form-group">
                      <label>New End Date</label>
+
                      <input type="date" class="form-control" name="endD"value="{{ $patient['endD'] }}" required>
-                     
+   
                   </div> 
                   <div class="form-group">
                      <label>Quarantine Day</label>
