@@ -41,13 +41,13 @@
                 <th width="180" class="text-center">Status</th>
                 <th width="180" class="text-center">Days Left</th>
             </tr>
-            
+            @php $i=1; @endphp
             @foreach($patient as $list)
                 @if ($list)
                 @endif
                 <tr>
                     
-                    <td>{{$list->data()['name']}}</td>
+                    <td>{{$i++}}</td>
                     <td>{{$list->data()['name']}}</td>
                     <td >{{$list->data()['phoneno']}}</td>
                     <td>{{$list->data()['address']}}</td>
@@ -66,6 +66,13 @@
                         $minlong = 101.6977-0.00539957;
                         $maxlat = 2.9794+0.00539957;
                         $maxlong = 101.6977+0.00539957;
+
+                        $p = 0.017453292519943295;
+                            // $c = cos;
+                            $a = 0.5 - cos(($qlat - $patientlat) * $p)/2 + 
+                            cos($patientlat * $p) * cos($qlat * $p) * 
+                            (1 -cos(($qlong - $patientlong) * $p))/2;
+                        $distance = 12742 * asin(sqrt($a));
                     }
 
                     if($quarantine=="Hospital Sungai Buloh"){
@@ -77,6 +84,13 @@
                         $maxlong = 101.58849957;
                         //radius=0.00539957
                         //radius 20m = 0.01079913
+
+                        $p = 0.017453292519943295;
+                            // $c = cos;
+                            $a = 0.5 - cos(($qlat - $patientlat) * $p)/2 + 
+                            cos($patientlat * $p) * cos($qlat * $p) * 
+                            (1 -cos(($qlong - $patientlong) * $p))/2;
+                        $distance = 12742 * asin(sqrt($a));
                     }
 
                     if($quarantine=="Home"){
@@ -86,25 +100,39 @@
                         $minlong = $qlong-0.01079913;
                         $maxlat = $qlat+0.01079913;
                         $maxlong = $qlong-0.01079913;
+
+                        $p = 0.017453292519943295;
+                            // $c = cos;
+                            $a = 0.5 - cos(($qlat - $patientlat) * $p)/2 + 
+                            cos($patientlat * $p) * cos($qlat * $p) * 
+                            (1 -cos(($qlong - $patientlong) * $p))/2;
+                        $distance = 12742 * asin(sqrt($a));
                     }
 
-                    if($patientlat<$minlat||$patientlat>$maxlat){
-                        $status = "Out";
-                    }
-                    else if($patientlong<$minlong||$patientlong>$maxlong){
+                    if($distance>0.0050){
                         $status = "Out";
                     }
                     else{
                         $status = "In";
                     }
                     
-                    echo $status;
+                    echo $status; 
                     ?>
+                    <script>
+                        window.setInterval('refresh()', 5000);
+                        // Call a function every 5000 milliseconds 
+                        // (OR 10 seconds).
                     
+                        // Refresh or reload page.
+                        function refresh() {
+                            window .location.reload();
+                        }
+                    </script>
                     </td>
                     <td class="text-center">{{$list->data()['quarantineDuration']}}</td>
                     
                 </tr>
+                
             @endforeach
             
         </table>
