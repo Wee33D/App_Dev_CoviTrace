@@ -22,54 +22,54 @@ class HealthAdminController extends Controller
     }
 
     function save1(Request $request){
-      // $validator = Validator::make(request->all(),[
-      //   'first_name' => 'required|unique:posts|max:255',
-      //   'last_name' =>'required|unique:posts|max:255',
-      //   'email' => 'required|email'
-
-      // ]);
-
       $stuRef = app('firebase.firestore')->database()->collection('Healthcare Authority')->newDocument(); 
       $stuRef->set([    
         'first_name' =>$request->first_name,
         'last_name' =>$request->last_name, 
-        'email'    =>$request->email
+        'email'    =>$request->email,
+        'state'    =>$request->state,
+        'role'    =>$request->role
     ]); 
     
       try{
       $password = 'admin1234';
-      $level = 2;
       
       $authRef = app('firebase.auth')->createUser([
       'email'    =>$request->email,
       'password' => $password,
-      'level' => $level
+      'role'    =>$request->role
       ]);
 
     $email = $request->email;
     app('firebase.auth')->sendEmailVerificationLink($email);   
 
+
+    // $adminrole = $request->role;
+    // app('firebase.auth')->index($adminrole); 
+    
   return back()->with('success','Admin was added successfuly');
    
 }   
+
 catch (\Kreait\Firebase\Exception\Auth\EmailExists $ex) {  
   echo 'email already exists';  
 }  
+
 }
 
   
-     public function index()
-     {
+    //  public function index()
+    //  {
   
-       try {
-         $uid = Session::get('uid');
-         $user = app('firebase.auth')->getUser($uid);
-         return view('home');
-       } catch (\Exception $e) {
-         return $e;
-       }
+    //    try {
+    //      $uid = Session::get('uid');
+    //      $user = app('firebase.auth')->getUser($uid);
+    //      return view('home');
+    //    } catch (\Exception $e) {
+    //      return $e;
+    //    }
  
-     }
+    //  }
 
      public function displayAdmininfo(){
 
@@ -84,8 +84,8 @@ catch (\Kreait\Firebase\Exception\Auth\EmailExists $ex) {
 
     public function update(Request $request,$id){
       $admin = app('firebase.firestore')->database()->collection('Healthcare Authority')->document($id)->update([
-    ['path'=> 'first_name','value'=>$request->first_name],
-    ['path'=> 'last_name','value'=>$request->last_name],
+    ['path'=> 'role','value'=>$request->role],
+    ['path'=> 'state','value'=>$request->state],
   ]);
       return back()->with('success','Admin was updated successfuly');
       

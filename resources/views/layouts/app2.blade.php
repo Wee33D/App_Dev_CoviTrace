@@ -49,7 +49,7 @@
                                 </li>
                             -->
                             <li class="nav-item">
-                              <a class="nav-link text-dark" href="{{ url('register1') }}">{{ __('Manage Healthcare Admin |') }}</a>
+                              <a class="nav-link text-dark" href="{{ url('register1') }}">{{ __('Manage Admin |') }}</a>
                           </li>
 
                           <li class="nav-item">

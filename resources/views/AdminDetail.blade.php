@@ -36,22 +36,35 @@
                  
                <div class="form-group">
                      <label>First Name</label>
-                     <input type="text" class="form-control" name='first_name' value="{{ $admin['first_name']}}">
+                     <input type="text" class="form-control" name='first_name' value="{{ $admin['first_name']}}" readonly>
                      
                   </div>
 
                   <div class="form-group">
                      <label>Last Name</label>
-                     <input type="text"  class="form-control" name='last_name' value="{{ $admin['last_name']}}">
+                     <input type="text"  class="form-control" name='last_name' value="{{ $admin['last_name']}}" readonly>
+                     
+                  </div>
+
+                  <div class="form-group">
+                     <label>Role</label>
+                     <input type="text"  class="form-control" name='role' value="{{ $admin['role']}}" readonly>
                      
                   </div>
 
                   <div class="form-group">
                      <label>Email</label>
-                     <input type="text"  class="form-control" name='email' value="{{ $admin['email']}}" readonly>
+                     <input type="text"  class="form-control" name='email' value="{{ $admin['email']}}">
                      
                   </div>
+
+                  <div class="form-group">
+                     <label>State</label>
+                     <input type="text"  class="form-control" name='state' value="{{ $admin['state']}}">
                      
+                  </div>
+
+                  
       
                   <br>
                   <a href="{{ url('register1') }}" class="btn btn-sm btn-danger float-end">Back</a>
