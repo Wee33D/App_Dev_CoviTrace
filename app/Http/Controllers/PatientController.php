@@ -113,6 +113,8 @@ public function update(Request $request,$id)
     ['path'=> 'startD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->startD))))],
     ['path'=> 'endD','value'=> new \Google\Cloud\Core\Timestamp(new \DateTime(date('Y-m-d H:i:s', strtotime($request->endD))))],
     ['path'=> 'quarantineDuration','value'=>$day],
+    ['path'=> 'statusNew','value'=>$request->start],
+    ['path'=> 'statusEnd','value'=>$request->end],
 
   ]);
       if($patient){
