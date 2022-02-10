@@ -62,6 +62,22 @@
                      
                    </div>
                
+               <div class="form-group">
+                     <label>Start New Quarantine</label><br>                   
+                     <input type="radio" id="" name="start" value="enable">
+                     <label for="html">Enable</label><br>
+                     <input type="radio" id="" name="start" value="disable" checked>
+                     <label for="css">Disable</label><br>
+                   </div>
+
+                   <div class="form-group">
+                     <label>End Quarantine</label><br>                   
+                     <input type="radio" id="" name="end" value="enable">
+                     <label for="html">Enable</label><br>
+                     <input type="radio" id="" name="end" value="disable" checked>
+                     <label for="css">Disable</label><br>
+                   </div>
+               
                   <div class="form-group">
                      <label>Start Date</label>
 
